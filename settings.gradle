@@ -1,0 +1,6 @@
+rootProject.name = 'multiModuleService'
+
+include 'order-module'
+include 'payment-module'
+include 'delivery-module'
+include 'common-module'

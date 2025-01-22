@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-module
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
+      show-sql: true
+
+
+  kafka:
+    bootstrap-servers: kafka1:9092,kafka2:9094,kafka3:9096
+    consumer:
+      group-id: order-group
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
