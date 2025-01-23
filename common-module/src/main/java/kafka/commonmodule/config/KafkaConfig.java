@@ -22,8 +22,8 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-    private static final String BOOTSTRAP_SERVERS = "kafka1:9092,kafka2:9094,kafka3:9096";
-
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServers;
 
     @Value("${spring.kafka.consumer.group-id}")
     private String consumerGroupId;
@@ -53,7 +53,7 @@ public class KafkaConfig {
 
     private Map<String, Object> kafkaProducerConfig() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return config;
@@ -61,7 +61,7 @@ public class KafkaConfig {
 
     private Map<String, Object> kafkaConsumerConfig() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);

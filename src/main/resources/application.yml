@@ -3,4 +3,9 @@ server:
 
 spring:
   kafka:
-    bootstrap-servers: 172.16.1.230:9092,172.16.1.230:9094,172.16.1.230:9096
+    bootstrap-servers: kafka1:9092,kafka2:9094,kafka3:9096
+
+logging:
+  level:
+    org.apache.kafka: DEBUG
+

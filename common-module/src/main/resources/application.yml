@@ -1,3 +1,12 @@
 spring:
   kafka:
     bootstrap-servers: kafka1:9092,kafka2:9094,kafka3:9096
+    consumer:
+      group-id: default-group
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+logging:
+  level:
+    org.apache.kafka: DEBUG

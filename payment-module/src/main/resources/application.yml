@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: payment-module
+  profiles:
+    active: docker
 
   datasource:
     url: jdbc:h2:mem:testdb
@@ -22,3 +24,7 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+logging:
+  level:
+    org.apache.kafka: DEBUG
